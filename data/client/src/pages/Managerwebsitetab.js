@@ -26,7 +26,7 @@ const Managerwebsitetab = () => {
   }, []);
 
   const fetchData = () => {
-    axios.get('https://data.api.saumiccraft/api/enrollments')
+    axios.get('https://data.api.saumiccraft.com/api/enrollments')
       .then(response => {
         const websiteData = response.data
           .filter(item => item.service === 'WEBSITE')
@@ -68,7 +68,7 @@ const Managerwebsitetab = () => {
 
   const handleStatusChange = (record) => {
     const updatedStatus = record.status === 'done' ? 'pending' : 'done';
-    axios.put(`https://data.api.saumiccraft/api/enrollments/${record._id}`, { status: updatedStatus })
+    axios.put(`https://data.api.saumiccraft.com/api/enrollments/${record._id}`, { status: updatedStatus })
       .then(response => {
         message.success('Status updated successfully');
         record.status = updatedStatus;

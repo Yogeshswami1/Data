@@ -37,7 +37,7 @@ const List = () => {
   }, []);
 
   const fetchData = () => {
-    axios.get('https://data.api.saumiccraft/api/enrollments')
+    axios.get('https://data.api.saumiccraft.com/api/enrollments')
       .then(response => {
         const sortedData = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
         setData(sortedData);
@@ -63,7 +63,7 @@ const List = () => {
 
   const handleStatusChange = (record) => {
     const updatedStatus = record.status === 'done' ? 'pending' : 'done';
-    axios.put(`https://data.api.saumiccraft/api/enrollments/${record._id}`, { status: updatedStatus })
+    axios.put(`https://data.api.saumiccraft.com/api/enrollments/${record._id}`, { status: updatedStatus })
       .then(response => {
         message.success('Status updated successfully');
         record.status = updatedStatus;
@@ -88,7 +88,7 @@ const List = () => {
     editForm.validateFields()
       .then(values => {
         values.date = values.date.format('YYYY-MM-DD');
-        axios.put(`https://data.api.saumiccraft/api/enrollments/${editRecord._id}`, values)
+        axios.put(`https://data.api.saumiccraft.com/api/enrollments/${editRecord._id}`, values)
           .then(response => {
             message.success('Enrollment updated successfully');
             setEditModalVisible(false);
@@ -104,7 +104,7 @@ const List = () => {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`https://data.api.saumiccraft/api/enrollments/${id}`)
+    axios.delete(`https://data.api.saumiccraft.com/api/enrollments/${id}`)
       .then(response => {
         message.success('Enrollment deleted successfully');
         fetchData();
@@ -115,7 +115,7 @@ const List = () => {
   };
 
   const handleDeleteSelected = () => {
-    const promises = selectedRowKeys.map(id => axios.delete(`https://data.api.saumiccraft/api/enrollments/${id}`));
+    const promises = selectedRowKeys.map(id => axios.delete(`https://data.api.saumiccraft.com/api/enrollments/${id}`));
     Promise.all(promises)
       .then(() => {
         message.success('Selected enrollments deleted successfully');

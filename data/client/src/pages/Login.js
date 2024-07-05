@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
-    axios.post('https://data.api.saumiccraft/api/auth/login', values)
+    axios.post('https://data.api.saumiccraft.com/api/auth/login', values)
       .then(response => {
         const { token, usertype } = response.data;
         // Save the token to localStorage or state

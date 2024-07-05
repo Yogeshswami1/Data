@@ -9,7 +9,7 @@ const Signup = () => {
   const [form] = Form.useForm();
   
   const onFinish = (values) => {
-    axios.post('https://data.api.saumiccraft/api/auth/signup', values)
+    axios.post('https://data.api.saumiccraft.com/api/auth/signup', values)
       .then(response => {
         console.log('Signup successful', response);
       })

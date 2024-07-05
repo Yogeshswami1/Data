@@ -26,7 +26,7 @@ const ManagerAmazonTab = () => {
   }, []);
 
   const fetchData = () => {
-    axios.get('https://data.api.saumiccraft/api/enrollments')
+    axios.get('https://data.api.saumiccraft.com/api/enrollments')
       .then(response => {
         const amazonData = response.data.filter(item => item.service === 'AMAZON');
         const sortedData = amazonData.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -78,7 +78,7 @@ const ManagerAmazonTab = () => {
 
   const handleStatusChange = (record) => {
     const updatedStatus = record.status === 'done' ? 'pending' : 'done';
-    axios.put(`https://data.api.saumiccraft/api/enrollments/${record._id}`, { status: updatedStatus })
+    axios.put(`https://data.api.saumiccraft.com/api/enrollments/${record._id}`, { status: updatedStatus })
       .then(response => {
         message.success('Status updated successfully');
         record.status = updatedStatus;

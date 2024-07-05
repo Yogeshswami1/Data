@@ -29,7 +29,7 @@ const Marketing = () => {
   }, []);
 
   const fetchData = () => {
-    axios.get('https://data.api.saumiccraft/api/enrollments')
+    axios.get('https://data.api.saumiccraft.com/api/enrollments')
       .then(response => {
         const sortedData = response.data.sort((a, b) => new Date(b.date) - new Date(a.date));
         setData(sortedData);

@@ -13,7 +13,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
-    axios.post('https://data.api.saumiccraft/api/enroll', values)
+    axios.post('https://data.api.saumiccraft.com/api/enroll', values)
       .then(response => {
         message.success('Form submitted successfully');
       })
@@ -31,7 +31,7 @@ const Dashboard = () => {
     const formData = new FormData();
     formData.append('file', file);
   
-    axios.post('https://data.api.saumiccraft/api/upload', formData, {
+    axios.post('https://data.api.saumiccraft.com/api/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
